@@ -103,8 +103,10 @@ public final class UploadFragment extends Fragment {
 	}
 
 	private void reset() {
-		titleEditor.setText("");
-		visibilitySwitch.setChecked(false);
+		if (getView() != null) {
+			titleEditor.setText("");
+			visibilitySwitch.setChecked(false);
+		}
 		Utils.cancelTask(uploadTask);
 		setUploadItem(null);
 	}
