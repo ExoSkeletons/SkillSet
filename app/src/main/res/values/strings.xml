@@ -55,10 +55,10 @@
     <string name="picture_profile">profile</string>
 
     <string-array name="item_sort_type">
-		<item>Most Popular</item>
-		<item>Most Viewed</item>
-		<item>Highest Rating</item>
-		<item>Best Rating Ratio</item>
+		<item>Popular</item>
+		<item>Views</item>
+		<item>Top</item>
+		<item>Best</item>
 		<item>Publish Time</item>
 	</string-array>
 </resources>
