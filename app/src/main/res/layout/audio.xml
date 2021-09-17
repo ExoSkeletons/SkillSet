@@ -1,41 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/audio_root"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:divider="@drawable/div"
-              android:padding="@dimen/sparsity"
-              android:showDividers="middle">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/audio_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/div"
+    android:gravity="center_vertical"
+    android:padding="@dimen/sparsity"
+    android:showDividers="middle">
 
 	<RelativeLayout
 		android:layout_width="wrap_content"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:layoutDirection="ltr"
 		tools:ignore="ContentDescription">
 
 		<ImageView
 			android:id="@+id/audio_play"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_alignParentTop="true"
 			android:layout_centerHorizontal="false"
 			android:layout_centerVertical="false"
-			android:visibility="invisible"/>
+			android:src="@drawable/ic_media_play_light"
+			android:visibility="visible"/>
 
 		<ProgressBar
 			android:id="@+id/audio_prepare_progress"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentStart="true"/>
+			android:layout_height="match_parent"
+			android:layout_alignParentStart="true"
+			android:visibility="invisible"/>
 
 	</RelativeLayout>
 
-	<SeekBar
-		android:id="@+id/audio_seek"
+	<LinearLayout
 		android:layout_width="0dp"
 		android:layout_height="match_parent"
-		android:layout_weight="1"/>
+		android:layout_weight="1"
+		android:divider="@drawable/div"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:showDividers="middle">
+
+		<SeekBar
+			android:id="@+id/audio_seek"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>
+
+		<TextView
+			android:id="@+id/audio_name"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:singleLine="true"
+			/>
+	</LinearLayout>
 
 	<TextView
 		android:id="@+id/audio_time"

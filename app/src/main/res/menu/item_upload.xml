@@ -12,7 +12,7 @@
 	<item
 		android:id="@+id/menu_text"
 		android:icon="@android:drawable/ic_menu_edit"
-		android:title="@string/type_text"/>
+		android:title="@string/text"/>
 	<item
 		android:id="@+id/menu_gallery"
 		android:icon="@android:drawable/ic_menu_gallery"

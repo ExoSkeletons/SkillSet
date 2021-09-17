@@ -31,6 +31,7 @@
 	<string name="file">file</string>
 	<string name="upload_item">Upload</string>
 	<string name="file_to_large">File to large</string>
+	<string name="camera">camera</string>
 	<string name="action_upload">Upload Item</string>
 	<string name="player_time">%1$s/%2$s</string>
 	<string name="player_time_empty">--/--</string>
@@ -39,19 +40,25 @@
 	<string name="upload_select_content">Select content to upload</string>
 	<string name="error_password_requirements">Password does not meet the requirements</string>
 	<string name="password_requirements">Passwords must be at least %1$d characters long, and contain at least one Lowercase letter, Uppercase letter and number</string>
-	<string name="discover_query_hint">Looking for something?</string>
+	<string name="hint_discover_query">Looking for something?</string>
 	<string name="sort_by">Sort by</string>
 	<string name="categories_related">Related Categories</string>
 	<string name="error_file_read">Error opening file</string>
-    <string name="camera">camera</string>
+	<string name="error_playing_media">Error playing media</string>
+	<string name="hint_feedback_positive">Say something nice! (Optional)</string>
+	<string name="hint_feedback_explain_critique">Explain your critique?</string>
+	<string name="feedback_updated">Updated feedback</string>
+	<string name="feedback_sent">Feedback sent</string>
 	<string name="record_audio">record</string>
-	<string name="type_text">text</string>
+	<string name="text">text</string>
 	<string name="gallery">gallery</string>
+    <string name="picture_profile">profile</string>
 
-	<string-array name="item_sort_type">
+    <string-array name="item_sort_type">
 		<item>Most Popular</item>
 		<item>Most Viewed</item>
 		<item>Highest Rating</item>
 		<item>Best Rating Ratio</item>
+		<item>Publish Time</item>
 	</string-array>
 </resources>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/colorPrimary"
+	android:divider="@drawable/div"
+	android:orientation="vertical"
+	android:showDividers="middle">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/colorPrimaryDark"
+		android:baselineAligned="false"
+		android:divider="@drawable/div"
+		android:orientation="horizontal"
+		android:padding="@dimen/sparsity"
+		android:showDividers="middle">
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:divider="@drawable/div"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<ImageView
+				android:id="@+id/category_image"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:scaleType="centerCrop"
+				tools:ignore="ContentDescription"/>
+
+			<TextView
+				android:id="@+id/category_name"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text=""
+				tools:text="@tools:sample/cities"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/colorPrimary"
+			android:divider="@drawable/div"
+			android:orientation="vertical"
+			android:showDividers="middle">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:background="@color/colorText"
+				android:gravity="center|start"
+				android:padding="@dimen/sparsity"
+				android:text="@string/categories_related"/>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/category_related"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:background="@color/colorText"
+				android:fadingEdge="vertical"
+				android:focusable="true"
+				android:orientation="vertical"
+				app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+				app:spanCount="2"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/colorText"
+		android:divider="@drawable/div"
+		android:orientation="horizontal"
+		android:padding="@dimen/sparsity"
+		android:showDividers="middle">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center|start"
+			android:singleLine="true"
+			android:text="@string/sort_by"/>
+
+		<Spinner
+			android:id="@+id/category_sort_spinner"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:entries="@array/item_sort_type"
+			/>
+	</LinearLayout>
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/category_items"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/colorText"
+		android:fadingEdge="vertical"
+		android:focusable="true"
+		android:orientation="vertical"
+		app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+		app:spanCount="3"/>
+
+</LinearLayout>

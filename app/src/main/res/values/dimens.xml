@@ -9,4 +9,5 @@
 	<dimen name="appbar_padding_top">8dp</dimen>
 	<dimen name="fadingEdgeLength">50dp</dimen>
 	<dimen name="sparsity">5dp</dimen>
+	<dimen name="floatingButton">30dp</dimen>
 </resources>

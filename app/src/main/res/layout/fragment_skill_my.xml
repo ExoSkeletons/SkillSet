@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			/>
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			app:srcCompat="@drawable/ic_audiotrack_light"
+			tools:ignore="ContentDescription"/>
+
+	</LinearLayout>
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1">
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			tools:itemCount="15"
+			tools:layout_editor_absoluteX="0dp"
+			tools:layout_editor_absoluteY="40dp"
+			tools:listitem="@layout/recycler_view_item">
+
+		</androidx.recyclerview.widget.RecyclerView>
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/my_skill_fragment_public_skill_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end|bottom"
+			android:layout_margin="@dimen/floatingButton"
+			android:clickable="true"
+			android:focusable="true"
+			app:srcCompat="@android:drawable/btn_star_big_on"
+			tools:layout_editor_absoluteX="320dp"
+			tools:layout_editor_absoluteY="528dp"/>
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

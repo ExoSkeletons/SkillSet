@@ -7,8 +7,10 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@color/colorPrimary"
+	android:divider="@drawable/div"
 	android:layoutDirection="ltr"
 	android:orientation="vertical"
+	android:showDividers="middle"
 	android:textDirection="ltr"
 	tools:ignore="ContentDescription">
 
@@ -34,8 +36,6 @@
 		android:id="@+id/upload_form"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_margin="@dimen/sparsity"
-		android:background="@color/colorPrimary"
 		android:divider="@drawable/div"
 		android:layoutDirection="ltr"
 		android:orientation="vertical"
@@ -161,16 +161,15 @@
 				android:layout_height="match_parent"
 				android:layout_alignTop="@+id/upload_item_preview_layout"
 				android:layout_alignParentBottom="false"
-				android:autofillHints=""
 				android:gravity="top"
 				android:hint="@string/example_text"
-				android:inputType="textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textLongMessage|textPersonName"
+				android:inputType="textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textLongMessage"
 				android:textAlignment="gravity"
 				android:textColor="@android:color/black"
 				android:textColorLink="@color/colorAccent"
 				android:textDirection="firstStrong"
 				android:visibility="gone"
-				tools:ignore="Autofill|LabelFor,UnusedAttribute"/>
+				tools:ignore="Autofill,Autofill|LabelFor,UnusedAttribute"/>
 
 			<LinearLayout
 				android:id="@+id/upload_item_preview_layout"

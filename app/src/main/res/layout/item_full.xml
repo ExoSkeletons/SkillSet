@@ -1,42 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/item_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/app_color"
+            android:background="@color/colorPrimary"
             android:layoutDirection="ltr"
             android:orientation="vertical"
-            android:textDirection="ltr">
+            android:scrollbars="none"
+            android:textDirection="ltr"
+            tools:ignore="ContentDescription">
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:descendantFocusability="blocksDescendants"
+		android:descendantFocusability="afterDescendants"
+		android:divider="@drawable/div"
 		android:layoutDirection="inherit"
 		android:orientation="vertical"
+		android:showDividers="middle"
 		android:textDirection="inherit">
 
 		<LinearLayout
 			android:id="@+id/item_full_header"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="horizontal">
+			android:background="@color/colorPrimary"
+			android:divider="@drawable/div"
+			android:orientation="horizontal"
+			android:padding="@dimen/sparsity"
+			android:showDividers="middle">
 
 			<ImageView
 				android:id="@+id/item_full_publisher_picture"
-				android:layout_width="match_parent"
+				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
-				android:contentDescription="@android:string/untitled"
+				android:clickable="true"
+				android:focusable="true"
 				android:scaleType="fitStart"
-				app:srcCompat="@mipmap/ic_launcher_round"/>
+				tools:ignore="ContentDescription"
+				/>
 
 			<LinearLayout
 				android:layout_width="0dp"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:divider="@drawable/div"
 				android:gravity="center_vertical"
-				android:orientation="vertical">
+				android:orientation="vertical"
+				android:showDividers="middle">
 
 				<TextView
 					android:id="@+id/item_full_category_name"
@@ -44,7 +56,7 @@
 					android:layout_height="wrap_content"
 					android:text=""
 					android:textAlignment="textStart"
-					android:textColor="@android:color/holo_green_light"/>
+					android:textColor="?android:attr/colorForeground"/>
 
 				<TextView
 					android:id="@+id/item_full_publisher_name"
@@ -52,7 +64,7 @@
 					android:layout_height="wrap_content"
 					android:text=""
 					android:textAlignment="textStart"
-					android:textColor="@android:color/holo_green_light"/>
+					android:textColor="?android:attr/colorForeground"/>
 			</LinearLayout>
 
 		</LinearLayout>
@@ -62,14 +74,71 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="@color/colorPrimaryDark"
-			android:contentDescription="@string/title_item_detail"
-			app:srcCompat="@android:drawable/btn_star_big_on"/>
+			>
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/item_full_comments"
+		</FrameLayout>
+
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:divider="@drawable/div"
+				android:gravity="center"
+				android:showDividers="middle">
+
+				<Spinner
+					android:id="@+id/item_full_praise"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:clickable="true"
+					android:focusable="true"
+					android:prompt="@drawable/ic_group_collapse_00"/>
+
+				<Spinner
+					android:id="@+id/item_full_criticise"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:clickable="true"
+					android:focusable="true"
+					android:prompt="@drawable/ic_group_collapse_08"/>
+
+			</LinearLayout>
+
+			<EditText
+				android:id="@+id/item_full_feedback_box"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:focusable="true"
+				android:imeOptions="actionDone"
+				android:inputType="textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textLongMessage"
+				android:maxLines="4"
+				android:minLines="1"
+				android:textDirection="firstStrong"
+				android:textIsSelectable="true"
+				tools:ignore="Autofill,LabelFor,UnusedAttribute"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:descendantFocusability="blocksDescendants"
+			android:orientation="vertical">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/item_full_comments"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/colorPrimary"
+				/>
+		</LinearLayout>
 
 	</LinearLayout>
 </ScrollView>

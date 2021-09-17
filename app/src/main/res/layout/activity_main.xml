@@ -11,7 +11,9 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_above="@+id/navigation"
+		android:background="@color/colorPrimary"
 		android:orientation="vertical"
+		android:padding="@dimen/sparsity"
 		android:textDirection="locale">
 
 	</LinearLayout>
@@ -22,6 +24,7 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
 		android:layoutDirection="ltr"
+		android:saveEnabled="true"
 		android:textDirection="locale"
 		android:visibility="visible"
 		app:menu="@menu/navigation"/>
