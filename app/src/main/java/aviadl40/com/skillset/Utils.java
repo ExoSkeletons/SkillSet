@@ -57,6 +57,7 @@ public final class Utils {
 		protected void onEndReached(RecyclerView recyclerView) {
 		}
 	}
+
 	public static final int MAX_TEXTURE_SIZE;
 	public static final Runnable DO_NOTHING = new Runnable() {
 		@Override
@@ -111,7 +112,7 @@ public final class Utils {
 		final Item[] items = new Item[]{
 				new Item.ImageItem(User.randomUser(), BitmapFactory.decodeResource(res, R.mipmap.ic_launcher_round)),
 				new Item.TextItem(User.randomUser(), "Call me Ishmael.\n\nSome years ago- never mind how long precisely- having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world."),
-				new Item.ImageItem(User.randomUser(), BitmapFactory.decodeResource(res, R.mipmap.ic_launcher)),
+				new Item.VideoItem(User.randomUser(), resolver, getUriFromResource(res, R.raw.snack)),
 				new Item.VideoItem(User.randomUser(), resolver, getUriFromResource(res, R.raw.purivision)),
 				new Item.AudioItem(User.randomUser(), resolver, getUriFromResource(res, R.raw.epic_sax_guy)),
 				new Item.DocumentItem(User.randomUser(), resolver, getUriFromResource(res, R.raw.fragment_upload)),
@@ -125,7 +126,7 @@ public final class Utils {
 				new Item.DocumentItem(User.randomUser(), resolver, getUriFromResource(res, R.raw.fragment_upload)),
 				new Item.AudioItem(User.randomUser(), resolver, getUriFromResource(res, R.raw.elevator)),
 		};
-		ArrayList<Skill> categories = DUMMY_CATEGORIES();
+		ArrayList<Skill> categories = DUMMY_SKILLS();
 		categories.add(Skill.NONE);
 		ArrayList<Comment> comments = DUMMY_COMMENTS();
 		for (Item i : items) {
@@ -137,7 +138,7 @@ public final class Utils {
 		return new ArrayList<>(Arrays.asList(items));
 	}
 
-	public static ArrayList<Skill> DUMMY_CATEGORIES() {
+	public static ArrayList<Skill> DUMMY_SKILLS() {
 		return new ArrayList<>(Arrays.asList(
 				new Skill("Painting"),
 				new Skill("Basketball"),
