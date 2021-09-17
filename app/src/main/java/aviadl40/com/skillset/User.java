@@ -272,7 +272,7 @@ public class User implements Expandable {
 	}
 
 	public final OperationResult<ArrayList<Skill>> myCategories() {
-		ArrayList<Skill> res = Utils.DUMMY_CATEGORIES();
+		ArrayList<Skill> res = Utils.DUMMY_SKILLS();
 		res.add(0, Skill.ALL);
 		res.add(1, Skill.NONE);
 		return new OperationResult<>(res);

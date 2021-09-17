@@ -195,7 +195,7 @@ public class Skill implements Expandable {
 	}
 
 	private OperationResult<ArrayList<Skill>> getRelated() {
-		return new OperationResult<>(new ArrayList<>(Utils.DUMMY_CATEGORIES().subList(0, 4)));
+		return new OperationResult<>(new ArrayList<>(Utils.DUMMY_SKILLS().subList(0, 4)));
 	}
 
 	@Override
