@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_color"
+              android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/discover_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/title_discover"
+		android:textAlignment="center"
+		android:textStyle="bold"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:divider="@drawable/div"
+		android:orientation="vertical"
+		android:padding="@dimen/sparsity"
+		android:showDividers="middle">
+
+		<SearchView
+			android:id="@+id/discover_search_bar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/colorText"
+			android:divider="@drawable/div"
+			android:imeOptions="actionSearch"
+			android:inputType="textCapSentences|textAutoCorrect|textAutoComplete"
+			android:queryHint="@string/discover_query_hint"
+			android:showDividers="middle"
+			android:textDirection="firstStrong"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/colorPrimaryDark"
+			android:orientation="vertical">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/discover_search_results"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:fadingEdge="vertical">
+
+			</androidx.recyclerview.widget.RecyclerView>
+
+			<ProgressBar
+				android:id="@+id/discover_search_progress"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:visibility="gone"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

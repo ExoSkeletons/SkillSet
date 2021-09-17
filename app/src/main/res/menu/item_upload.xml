@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/menu_camera"
+		android:icon="@android:drawable/ic_menu_camera"
+		android:title="@string/camera"/>
+	<item
+		android:id="@+id/menu_record"
+		android:icon="@android:drawable/presence_audio_online"
+		android:title="@string/record_audio"/>
+	<item
+		android:id="@+id/menu_text"
+		android:icon="@android:drawable/ic_menu_edit"
+		android:title="@string/type_text"/>
+	<item
+		android:id="@+id/menu_gallery"
+		android:icon="@android:drawable/ic_menu_gallery"
+		android:title="@string/gallery"/>
+	<item
+		android:id="@+id/menu_file"
+		android:icon="@android:drawable/ic_menu_save"
+		android:title="@string/file"/>
+
+</menu>
