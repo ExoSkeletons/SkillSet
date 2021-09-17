@@ -365,7 +365,7 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 						query = StreamUtils.readString(is),
 						path = StreamUtils.readString(is);
 				iData = new Uri.Builder()
-						.authority(s.equals("") ? null : s)
+						.authority(s)
 						.scheme(scheme.equals("") ? null : scheme)
 						.fragment(fragment.equals("") ? null : fragment)
 						.query(query.equals("") ? null : query)
@@ -624,7 +624,6 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 			return iData != null && current == iData;
 		}
 
-		@SuppressWarnings("ConstantConditions")
 		@Override
 		public boolean isValid() {
 			return super.isValid() && ("" + resolver.getType(iData)).contains("audio");
@@ -671,7 +670,6 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 			return imageView;
 		}
 
-		@SuppressWarnings("ConstantConditions")
 		@Override
 		public boolean isValid() {
 			return super.isValid() && ("" + resolver.getType(iData)).contains("video") || ("" + resolver.getType(iData)).contains("octet-stream");
@@ -779,7 +777,7 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 			args.putByteArray(ObjectFragment.OBJECT_KEY, os.toByteArray());
 			SingleFragmentActivity.start(context, ItemFragment.class, args);
 			return true;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
