@@ -18,7 +18,7 @@ import aviadl40.com.skillset.Utils;
 public abstract class ObjectFragment<Object> extends Fragment {
 	public static final String OBJECT_KEY = "object fragment key";
 	@Nullable
-	Object object;
+	private Object object;
 	private AsyncTask<Void, Void, Object> populateTask;
 
 	@Nullable
