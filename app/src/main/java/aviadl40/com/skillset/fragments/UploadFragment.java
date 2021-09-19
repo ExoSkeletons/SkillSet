@@ -1,7 +1,9 @@
 package aviadl40.com.skillset.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -45,6 +48,8 @@ public final class UploadFragment extends Fragment {
 	private EditText titleEditor, textItemEditor;
 	private Switch visibilitySwitch;
 	private NetTask<Object, Void, Void> uploadTask = null;
+	@Nullable
+	private ContentResolver mContentResolver = null;
 
 	private void setUploadItem(@Nullable Item item) {
 		if (item != null && !item.isValid())
@@ -113,7 +118,8 @@ public final class UploadFragment extends Fragment {
 
 	private File startCameraActivity(boolean video) {
 		final Intent cameraIntent = new Intent().setAction(video ? MediaStore.ACTION_VIDEO_CAPTURE : MediaStore.ACTION_IMAGE_CAPTURE);
-		if (cameraIntent.resolveActivity(getActivity().getPackageManager()) != null) { // Check for Camera activity availability
+		Activity mActivity = getActivity();
+		if (mActivity != null && cameraIntent.resolveActivity(mActivity.getPackageManager()) != null) { // Check for Camera activity availability
 			try {
 				File resFile = File.createTempFile(
 						video ? "VID" : "JPG" + "_",
@@ -124,7 +130,7 @@ public final class UploadFragment extends Fragment {
 				cameraIntent.putExtra(
 						MediaStore.EXTRA_OUTPUT,
 						FileProvider.getUriForFile(
-								getContext(),
+								mActivity,
 								Utils.FILE_PROVIDER_PACKAGE,
 								resFile
 						)
@@ -154,27 +160,26 @@ public final class UploadFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		if (resultCode == RESULT_OK) {
-			ContentResolver resolver = getContext().getContentResolver();
 			switch (requestCode) {
 				case REQUEST_DOCUMENT_CHOOSER:
-					if (intent != null && intent.getData() != null)
-						setUploadItem(new Item.DocumentItem(AuthUser.getMe(), resolver, intent.getData()));
+					if (intent != null && intent.getData() != null && mContentResolver != null)
+						setUploadItem(new Item.DocumentItem(AuthUser.getMe(), mContentResolver, intent.getData()));
 					break;
 
 				case REQUEST_MEDIA_CHOOSER:
-					if (intent != null && intent.getData() != null) {
+					if (intent != null && intent.getData() != null && mContentResolver != null) {
 						Uri uri = intent.getData();
-						String type = "" + resolver.getType(uri);
+						String type = "" + mContentResolver.getType(uri);
 						if (type.contains("image")) {
 							try {
-								setUploadItem(new Item.ImageItem(AuthUser.getMe(), Utils.orientedBitmap(resolver, uri)));
+								setUploadItem(new Item.ImageItem(AuthUser.getMe(), Utils.orientedBitmap(mContentResolver, uri)));
 							} catch (IOException ignored) {
 								Toast.makeText(getContext(), getString(R.string.error_file_read), Toast.LENGTH_SHORT).show();
 							}
 						} else if (type.contains("video")) {
-							setUploadItem(new Item.VideoItem(AuthUser.getMe(), resolver, uri));
+							setUploadItem(new Item.VideoItem(AuthUser.getMe(), mContentResolver, uri));
 						} else if (type.contains("audio")) {
-							setUploadItem(new AudioItem(AuthUser.getMe(), resolver, uri));
+							setUploadItem(new AudioItem(AuthUser.getMe(), mContentResolver, uri));
 						}
 						break;
 					}
@@ -192,19 +197,28 @@ public final class UploadFragment extends Fragment {
 						tmpCameraImageFile.delete();
 						tmpCameraImageFile = null;
 					} else if (tmpCameraVideoFile != null) {
-						setUploadItem(new Item.VideoItem(
-								AuthUser.getMe(),
-								resolver,
-								FileProvider.getUriForFile(
-										getContext(),
-										Utils.FILE_PROVIDER_PACKAGE,
-										tmpCameraVideoFile
-								)
-						));
+						Context context = getContext();
+						if (context != null && mContentResolver != null) {
+							setUploadItem(new Item.VideoItem(
+									AuthUser.getMe(),
+									mContentResolver,
+									FileProvider.getUriForFile(
+											getContext(),
+											Utils.FILE_PROVIDER_PACKAGE,
+											tmpCameraVideoFile
+									)
+							));
+						}
 					}
 					break;
 			}
 		}
+	}
+
+	@Override
+	public void onAttach(@NonNull Context context) {
+		super.onAttach(context);
+		mContentResolver = context.getContentResolver();
 	}
 
 	@Override
