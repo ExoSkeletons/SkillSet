@@ -66,7 +66,12 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 
 		@Override
 		protected Item readObject(InputStream is) throws IOException {
-			return readItem(is, getContext().getContentResolver());
+			try {
+				Context context = requireContext();
+				return readItem(is, context.getContentResolver());
+			} catch (IllegalStateException e) {
+				throw new IOException(e);
+			}
 		}
 
 		@SuppressWarnings("unchecked")
@@ -450,6 +455,13 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 			}
 		}
 
+		@Nullable
+		private static MediaPlayer player = null;
+		@Nullable
+		private static Uri current = null;
+		@Nullable
+		private static UpdateTask updateViewTask = null;
+
 		static void pause() {
 			System.out.println("pausing...");
 			if (player != null && current != null) {
@@ -474,12 +486,6 @@ public abstract class Item<ItemData> implements Expandable, Dumpable {
 			}
 		}
 
-		@Nullable
-		private static MediaPlayer player = null;
-		@Nullable
-		private static Uri current = null;
-		@Nullable
-		private static UpdateTask updateViewTask = null;
 		final View.OnClickListener
 				pl = new View.OnClickListener() {
 			@Override
