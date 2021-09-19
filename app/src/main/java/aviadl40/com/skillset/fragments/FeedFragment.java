@@ -24,7 +24,7 @@ import aviadl40.com.skillset.User.HasUser;
 import aviadl40.com.skillset.Utils;
 import aviadl40.com.skillset.adapters.ViewPagerAdapter;
 
-@SuppressWarnings({"unchecked", "StaticFieldLeak"})
+@SuppressWarnings({"StaticFieldLeak"})
 public final class FeedFragment extends Fragment implements HasUser<AuthUser> {
 	private class FeedItemsTask extends ArrayNetTask<Void, Item, Item> {
 		FeedItemsTask(ViewPagerAdapter pager) {
